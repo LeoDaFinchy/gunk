@@ -26,7 +26,6 @@ const cross = "\u2718";
 try{
     if(window){
         defineColoursForBrowser();
-        console.log('ding!');
     }
 } catch (e) {
     defineColoursForTerminal();
