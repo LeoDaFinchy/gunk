@@ -30,15 +30,17 @@ export default class App{
   renderRoom (room) {
     const el = document.createElement('div')
     el.innerText = `You are in a ${room.name()}`
+    el.style.backgroundColor = room.colour
     return el
   }
 
   * actionButtons () {
-    for(const neighbour of this.currentRoom.neighbours()){
+    for(const neighbour of this.currentRoom.neighbours){
       const button = document.createElement('button')
       button.onclick = () => {
         this.currentRoom = neighbour
       }
+      button.style.backgroundColor = neighbour.colour
       button.innerText = `Go to ${neighbour.name()}`
       yield button
     }
