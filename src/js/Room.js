@@ -1,22 +1,48 @@
+import _ from 'lodash'
+import {lazyAttribute, out} from './main'
+
 export default class Room{
-  constructor (colour = 'black') {
-    this._colour = colour
-    this._neighbours = []
+  constructor ({parentNeighbour} = {}) {
+    lazyAttribute(this, 'neighbours', () => {
+      const neighbours = []
+      if(parentNeighbour){
+        neighbours.push(parentNeighbour)
+      }
+      return _.concat(neighbours, this.generateNeighbours())
+    })
+    lazyAttribute(this, 'colour', randomColour)
   }
 
   name () {
-    return `${this._colour} room`
+    return `${this.colour} room`
   }
 
-  * neighbours () {
-    for (const neighbour of this._neighbours)
-    {
-      yield neighbour
-    }
+  spawnNeighbour () {
+    this.neighbours.push(new Room({parentNeighbour: this}))
   }
 
-  static connectRooms (a, b) {
-    a._neighbours.push(b)
-    b._neighbours.push(a)
-  }
+  generateNeighbours = () => [
+    () => [],
+    () => [new Room({parentNeighbour: this})],
+    () => [new Room({parentNeighbour: this}), new Room({parentNeighbour: this})]
+  ][Math.floor(Math.random() * 2.5)]()
+}
+
+function randomColour () {
+  return _.sample([
+    'chocolate',
+    'coral',
+    'gold',
+    'goldenrod',
+    'honeydew',
+    'ivory',
+    'khaki',
+    'lavender',
+    'orange',
+    'pink',
+    'plum',
+    'thistle',
+    'turquoise',
+    'wheat'
+  ])
 }
