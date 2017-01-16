@@ -1,5 +1,19 @@
+---
+theme: normal
+title: Beginning
+---
+
 0001 - Beginning
 =
+
+---
+<div id='view'></div>
+<div id='actions'></div>
+<script type="text/javascript" src="{{ '/assets/0001/app.js' | relative_url }}">
+</script>
+<link rel='stylesheet' href="{{ '/assets/0001/app.css' | relative_url }}"/>
+---
+
 So here we are. Version 0001. Simple, as promised. A simple world, made of three connected coloured rooms. Not much to do right now, but that was expected. I've had to assemble a main loop, handle input and output, and create a data model.
 
 The temptation to start refining and optimising and preparing for the future has been strong. I wasted some time earlier trying to make `App.cycle` a lot more flexible than it's current state - to allow dynamic assembly of the core loop. I abandoned that as it was taking too much energy to achieve very little immediate benefit.

@@ -1,0 +1,39 @@
+---
+theme: normal
+title: Project Gunk
+---
+
+0000
+=
+
+---
+
+This is my new project. The goal: to iteratively create a game in such a way that each iteration is playable, and includes at least one new feature.
+
+"Iteratively"
+--
+I'm not going to start out with some grand plan. I have ideas buzzing around, but the point of this project is to explore the space of possible games, going for easy next steps rather than stretching towards some ideal.
+
+"Game"
+--
+Definitions abound, but I'll make do with this: an iteractive system that responds to user input in order to virtually explore a possibility space.
+
+"Playable"
+--
+The aim is to avoid reaching for something that will be half-done and broken. Advanced features will be built on top of earlier, complete features.
+
+Simply put, each iteration will always be 'finished', and so, 'playable'.
+
+"Feature"
+--
+A feature is something that expands what the player can do. It will expand the volume, variety, or possible combinations of interactions that the player can have with the game space.
+
+Let's be practical
+--
+I've kept the goals above intentionally vague, talking about 'possibility space' and stuff, just so as not to limit myself in the long run. In practice, I'm going to start with a simple idea: a world built of rooms that a player can travel between. Join me next time for version 0001!
+
+---
+
+{% for post in site.posts %}
+<a href="{{post.url | relative_url}}">{{post.title}}</a>
+{% endfor %}
