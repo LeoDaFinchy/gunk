@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  font-family: "Lucida Sans", sans-serif; }
+
+#view {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-positive: 1;
+      flex-grow: 1; }
+  #view div {
+    font-weight: bold;
+    padding: 100px; }
+
+#actions {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: center;
+      justify-content: center;
+  padding: 5px; }
+  #actions button {
+    margin: 5px;
+    padding: 10px;
+    font-weight: bold; }
+
+/*# sourceMappingURL=app.css.map*/
