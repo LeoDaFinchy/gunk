@@ -1,11 +1,11 @@
 import _ from 'lodash'
-import {lazyAttribute, out} from './main'
+import {lazyAttribute} from './main'
 
-export default class Room{
+export default class Room {
   constructor ({parentNeighbour} = {}) {
     lazyAttribute(this, 'neighbours', () => {
       const neighbours = []
-      if(parentNeighbour){
+      if (parentNeighbour) {
         neighbours.push(parentNeighbour)
       }
       return _.concat(neighbours, this.generateNeighbours())
@@ -24,7 +24,7 @@ export default class Room{
   generateNeighbours = () => [
     () => [],
     () => [new Room({parentNeighbour: this})],
-    () => [new Room({parentNeighbour: this}), new Room({parentNeighbour: this})]
+    () => [new Room({parentNeighbour: this}), new Room({parentNeighbour: this})],
   ][Math.floor(Math.random() * 2.5)]()
 }
 
@@ -43,6 +43,6 @@ function randomColour () {
     'plum',
     'thistle',
     'turquoise',
-    'wheat'
+    'wheat',
   ])
 }
