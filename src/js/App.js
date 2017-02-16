@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export default class App {
   constructor (state) {
     this._state = state
@@ -19,10 +21,20 @@ export default class App {
     this._actions = []
   }
 
+  getRoomAdjectives (room) {
+    const {size, shape, colour} = room
+    return _.compact([
+      size === 'average' ? null : size,
+      shape,
+      colour,
+    ])
+  }
+
   renderRoom (room) {
+    const adjectives = this.getRoomAdjectives(room).join(', ')
     const el = document.createElement('div')
-    el.innerText = `You are in a ${room.name()}`
-    el.style.backgroundColor = room.colour
+    el.innerText = `You are in a ${adjectives} room`
+    el.className = `${room.colour} ${room.size} ${room.shape}`
     return el
   }
 
@@ -32,8 +44,9 @@ export default class App {
       button.onclick = () => {
         this.currentRoom = neighbour
       }
-      button.style.backgroundColor = neighbour.colour
-      button.innerText = `Go to ${neighbour.name()}`
+      button.className = neighbour.colour
+      const adjectives = this.getRoomAdjectives(neighbour).join(', ')
+      button.innerText = `Go to ${adjectives} room`
       yield button
     }
   }

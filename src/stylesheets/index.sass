@@ -30,8 +30,50 @@ body
   @include centered-single
   flex-grow: 1
   div
-    font-weight: bold
     padding: 100px
+    color: rgba(255, 255, 255, 0.9)
+    text-shadow: -1px -1px 0px rgba(127,127,127,0.5), 1px -1px 0px rgba(127,127,127,0.5), 0px 2px 0px rgba(127,127,127,0.8), 0px 3px 4px rgba(0,0,0,0.5)
+    box-shadow: 0px 3px 3px rgba(0,0,0,0.5)
+    letter-spacing: 1px
+    &.red
+      background-color: #cc3333
+    &.orange
+      background-color: #cc9933
+    &.yellow
+      background-color: #cccc33
+    &.green
+      background-color: #33cc33
+    &.cyan
+      background-color: #33cccc
+    &.blue
+      background-color: #3333cc
+    &.purple
+      background-color: #9933cc
+    &.violet
+      background-color: #cc3399
+    &.black
+      background-color: #333333
+    &.white
+      background-color: #ffffff
+
+    &.huge
+      padding: 150px
+    &.large
+      padding: 120px
+    &.small
+      padding: 80px
+    &.tiny
+      padding: 50px
+    
+    &.round
+      border-radius: 150px
+    &.triangular
+      border-top-right-radius: 150px
+      border-top-left-radius: 150px
+    &.hexagonal
+      border-top-right-radius: 150px
+      border-bottom-left-radius: 150px
+
 
 #actions
   @include centered-row
@@ -39,4 +81,26 @@ body
   button
     margin: 5px
     padding: 10px
-    font-weight: bold
+    letter-spacing: 0.5px
+    text-shadow: -1px -1px 0px grey, 1px 1px 0px grey, -1px 1px 0px grey, 1px -1px 0px grey
+    color: white
+    &.red
+      background-color: #cc3333
+    &.orange
+      background-color: #cc9933
+    &.yellow
+      background-color: #cccc33
+    &.green
+      background-color: #33cc33
+    &.cyan
+      background-color: #33cccc
+    &.blue
+      background-color: #3333cc
+    &.purple
+      background-color: #9933cc
+    &.violet
+      background-color: #cc3399
+    &.black
+      background-color: #333333
+    &.white
+      background-color: #ffffff
