@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import {playerActivities} from './Action'
 
 export default class App {
   constructor (state) {
@@ -7,18 +8,23 @@ export default class App {
   }
 
   get currentRoom () { return this._state.currentRoom }
-  set currentRoom (room) {
-    this._actions.push(() => {
-      this._state.currentRoom = room
-    })
-    _.debounce(this.cycle, 16)()
+  get currentActivity () { return this._state.playerActivity }
+
+  updateState = newState => {
+    this._state = _.merge(this._state, newState)
   }
 
   doActions () {
-    for (const func of this._actions) {
-      func()
-    }
-    this._actions = []
+    this.actionSet.doActions()
+  }
+
+  get actionSet () {
+    console.error('Actions not yet connected to App')
+  }
+  set actionSet (actions) {
+    Object.defineProperty(this, 'actionSet', {
+      value: actions,
+    })
   }
 
   getRoomAdjectives (room) {
@@ -31,6 +37,21 @@ export default class App {
   }
 
   renderRoom (room) {
+    const {playerActivity} = this._state
+    if (playerActivity === playerActivities.inspectingRoom) {
+      return this.renderRoomDetailed(room)
+    }
+    return this.renderRoomCursory(room)
+  }
+
+  renderRoomCursory (room) {
+    const el = document.createElement('div')
+    el.innerText = `You are in a ${room.colour} room.`
+    el.className = `${room.colour}`
+    return el
+  }
+
+  renderRoomDetailed (room) {
     const adjectives = this.getRoomAdjectives(room).join(', ')
     const el = document.createElement('div')
     el.innerText = `You are in a ${adjectives} room`
@@ -38,16 +59,28 @@ export default class App {
     return el
   }
 
+  renderChangeRoomButton (room) {
+    const button = document.createElement('button')
+    button.onclick = this.actionSet.changeRoom(room)
+    button.className = room.colour
+    button.innerText = `Go to ${room.colour} room`
+    return button
+  }
+
+  renderInspectRoomButton (room) {
+    const button = document.createElement('button')
+    button.onclick = this.actionSet.inspectRoom(room)
+    button.className = room.colour
+    button.innerText = `Inspect ${room.colour} room`
+    return button
+  }
+
   * actionButtons () {
     for (const neighbour of this.currentRoom.neighbours) {
-      const button = document.createElement('button')
-      button.onclick = () => {
-        this.currentRoom = neighbour
-      }
-      button.className = neighbour.colour
-      const adjectives = this.getRoomAdjectives(neighbour).join(', ')
-      button.innerText = `Go to ${adjectives} room`
-      yield button
+      yield this.renderChangeRoomButton(neighbour)
+    }
+    if (this.currentActivity === playerActivities.standingInRoom) {
+      yield (this.renderInspectRoomButton(this.currentRoom))
     }
   }
 
