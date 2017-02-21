@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  font-family: "Lucida Sans", sans-serif; }
+
+#view {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-positive: 1;
+      flex-grow: 1; }
+  #view div {
+    padding: 100px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: -1px -1px 0px rgba(127, 127, 127, 0.5), 1px -1px 0px rgba(127, 127, 127, 0.5), 0px 2px 0px rgba(127, 127, 127, 0.8), 0px 3px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px; }
+    #view div.red {
+      background-color: #cc3333; }
+    #view div.orange {
+      background-color: #cc9933; }
+    #view div.yellow {
+      background-color: #cccc33; }
+    #view div.green {
+      background-color: #33cc33; }
+    #view div.cyan {
+      background-color: #33cccc; }
+    #view div.blue {
+      background-color: #3333cc; }
+    #view div.purple {
+      background-color: #9933cc; }
+    #view div.violet {
+      background-color: #cc3399; }
+    #view div.black {
+      background-color: #333333; }
+    #view div.white {
+      background-color: #ffffff; }
+    #view div.huge {
+      padding: 150px; }
+    #view div.large {
+      padding: 120px; }
+    #view div.small {
+      padding: 80px; }
+    #view div.tiny {
+      padding: 50px; }
+    #view div.round {
+      border-radius: 150px; }
+    #view div.triangular {
+      border-top-right-radius: 150px;
+      border-top-left-radius: 150px; }
+    #view div.hexagonal {
+      border-top-right-radius: 150px;
+      border-bottom-left-radius: 150px; }
+
+#actions {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: center;
+      justify-content: center;
+  padding: 5px; }
+  #actions button {
+    margin: 5px;
+    padding: 10px;
+    letter-spacing: 0.5px;
+    text-shadow: -1px -1px 0px grey, 1px 1px 0px grey, -1px 1px 0px grey, 1px -1px 0px grey;
+    color: white; }
+    #actions button.red {
+      background-color: #cc3333; }
+    #actions button.orange {
+      background-color: #cc9933; }
+    #actions button.yellow {
+      background-color: #cccc33; }
+    #actions button.green {
+      background-color: #33cc33; }
+    #actions button.cyan {
+      background-color: #33cccc; }
+    #actions button.blue {
+      background-color: #3333cc; }
+    #actions button.purple {
+      background-color: #9933cc; }
+    #actions button.violet {
+      background-color: #cc3399; }
+    #actions button.black {
+      background-color: #333333; }
+    #actions button.white {
+      background-color: #ffffff; }
+
+/*# sourceMappingURL=app.css.map*/
