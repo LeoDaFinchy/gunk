@@ -12,6 +12,8 @@
     "no-console": 0,
     "arrow-parens": [2, "as-needed"],
     "comma-dangle": [2, "always-multiline"],
-    "space-before-function-paren": [2, "always"]
+    "space-before-function-paren": [2, "always"],
+    "space-in-parens": 1,
+    "operator-linebreak": 0
   }
 }

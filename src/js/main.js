@@ -6,7 +6,7 @@ import '../stylesheets/index.sass'
 import './utils/colour_console'
 
 import App from './App'
-import Room from './Room'
+import {RoomFactory} from './Room'
 import Actions, {playerActivities} from './Action'
 
 function ready () {
@@ -21,8 +21,13 @@ function ready () {
 ready()
 
 function main () {
-  const room1 = new Room()
-  room1.spawnNeighbour()
+  const starterRoom = RoomFactory()
+
+  const room1 = starterRoom()
+  const room2 = starterRoom()
+
+  room1.neighbours.push(room2)
+  room2.neighbours.push(room1)
 
   const app = new App({
     currentRoom: room1,
@@ -33,15 +38,3 @@ function main () {
 
   app.cycle()
 }
-
-export const lazyAttribute = (obj, propName, source) => Object.defineProperty(obj, propName, {
-  get: () => {
-    const val = source()
-    Object.defineProperty(obj, propName, {
-      value: val,
-    })
-    return val
-  },
-  enumerable: true,
-  configurable: true,
-})
